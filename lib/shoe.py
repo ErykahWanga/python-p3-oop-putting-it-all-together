@@ -27,7 +27,8 @@ class Shoe:
     @size.setter
     def size(self, value):
         if not isinstance(value, int):
-            raise ValueError("size must be an integer")
+            print("size must be an integer")
+            return
         if value <= 0:
             raise ValueError("Size must be a positive integer")
         self._size = value

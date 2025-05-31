@@ -26,7 +26,8 @@ class Book:
     @page_count.setter
     def page_count(self, value):
         if not isinstance(value, int):
-            raise ValueError("page_count must be an integer")
+            print("page_count must be an integer")
+            return
         if value <= 0:
             raise ValueError("page_count must be a positive integer")
         self._page_count = value
