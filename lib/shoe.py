@@ -1,12 +1,11 @@
 class Shoe:
-    def __init__(self, brand, size, condition="New", id=None):
+    def __init__(self, brand, size, id=None):
         self._brand = None
         self._size = None
-        self._condition = None
+        self._condition = "New"
         self.id = id
         self.brand = brand
         self.size = size
-        self.condition = condition
 
     def __repr__(self):
         return f"<Shoe {self.id}: {self.brand}, Size {self.size}, {self.condition}>"
@@ -27,8 +26,10 @@ class Shoe:
 
     @size.setter
     def size(self, value):
-        if not isinstance(value, (int, float)) or value <= 0:
-            raise ValueError("Size must be a positive number")
+        if not isinstance(value, int):
+            raise ValueError("size must be an integer")
+        if value <= 0:
+            raise ValueError("Size must be a positive integer")
         self._size = value
 
     @property
@@ -41,3 +42,7 @@ class Shoe:
         if not isinstance(value, str) or value not in valid_conditions:
             raise ValueError(f"Condition must be one of {valid_conditions}")
         self._condition = value
+
+    def cobble(self):
+        print("Your shoe is as good as new!")
+        self.condition = "New"
